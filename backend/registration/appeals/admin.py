@@ -1,3 +1,13 @@
 from django.contrib import admin
+from .models import Appeals
 
-# Register your models here.
+
+@admin.register(Appeals)
+class AppealsAdmin(admin.ModelAdmin):
+    list_display = (
+        'last_name',
+        'first_name',
+        'patronymic',
+        'phone',
+        'text'
+    )
