@@ -14,10 +14,9 @@ class Appeals(models.Model):
         max_length=150,
         verbose_name='Отчество'
     )
-    phone = models.CharField(
-        max_length=12,
+    phone = models.BigIntegerField(
         verbose_name='Номер телефона',
-        help_text='Введите номер телефона в формате +79001234567'
+        help_text='Введите номер телефона в формате 89001234567'
     )
     text = models.TextField(
         verbose_name='Обращение',
