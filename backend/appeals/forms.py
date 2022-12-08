@@ -24,11 +24,9 @@ class AppealsForm(forms.ModelForm):
             attrs={'placeholder': 'Отчество'}
         )
     )
-    phone = forms.CharField(
-        min_length=11,
-        max_length=12,
+    phone = forms.IntegerField(
         widget=forms.TextInput(
-            attrs={'placeholder': 'Введите номер телефона в формате +79001234567'}
+            attrs={'placeholder': 'Введите номер телефона в формате 89001234567'}
         )
     )
     text = forms.CharField(
