@@ -3,7 +3,7 @@ name: App workflow for registration
 on: [push]
 
 jobs:
-  tests:
+  install_requirements:
     runs-on: ubuntu-latest
 
     steps:
@@ -22,8 +22,7 @@ jobs:
   build_and_push_to_docker_hub:
     name: Push Docker image to Docker Hub
     runs-on: ubuntu-latest
-    needs: tests
-    if: github.ref == 'refs/heads/master'
+    needs: install_requirements
     steps:
       - name: Check out the repo
         # Проверка доступности репозитория Docker Hub для workflow
@@ -42,4 +41,5 @@ jobs:
         uses: docker/build-push-action@v2 
         with:
           push: true
+          context: ./registration/
           tags: ${{ secrets.DOCKER_USERNAME }}/registration:latest
